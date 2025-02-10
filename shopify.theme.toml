@@ -1,0 +1,6 @@
+[environments.dev]
+store = ""
+ignore = ["frontend/","package.json","package-lock.json","**/*.json"]
+
+[environments.prod]
+store = ""

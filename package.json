@@ -1,0 +1,44 @@
+{
+  "name": "pd-shop",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "info": "shopify theme info -e",
+    "logout": "shopify auth logout",
+    "list": "shopify theme list -e",
+    "log": "shopify theme console -e prod",
+    "dev": "vite",
+    "dev-watch": "shopify theme dev -e prod",
+    "dev-shop": "npm run logout && npm run dev-push && npm run dev-watch",
+    "dev-push": "shopify theme push -d -e prod",
+    "dev-update": "shopify theme push -e prod -d",
+    "theme-push": "npm run build && npm run logout && shopify theme push -e prod -n -x='*.json' -t",
+    "theme-pull": "npm run logout && shopify theme pull -e prod -l",
+    "theme-pull-json-d": "shopify theme pull -e prod -o='*.json' -d",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@by-association-only/vite-plugin-shopify-clean": "^2.0.0",
+    "@vitejs/plugin-vue": "^5.1.3",
+    "npm-check-updates": "^17.1.1",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-globlin": "^0.1.4",
+    "sass": "^1.78.0",
+    "vite": "^5.4.3",
+    "vite-plugin-shopify": "^3.0.1",
+    "vite-plugin-shopify-import-maps": "^0.5.4"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "motion": "^10.18.0",
+    "postcss": "^8.4.47",
+    "swiper": "^11.1.14",
+    "tailwindcss": "^3.4.14"
+  },
+  "description": "",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,39 @@
+{% comment %}
+  This is the product card section that renders a Web Component.
+{% endcomment %}
+<div class="product-grid">
+{% for product in collections.all.products %}
+  <product-card 
+    data-title="{{ product.title | escape }}" 
+    data-price="{{ product.price | money | escape }}" 
+    data-compare-price="{{ product.compare_at_price | money | escape }}"
+    data-image="{{ product.featured_image | img_url: 'large' }}"
+    data-variants='[
+      {% for variant in product.variants %}
+        {
+          "id": {{ variant.id }},
+          "title": "{{ variant.title | escape }}",
+          "price": "{{ variant.price | money | escape }}"
+        }
+        {% if forloop.last == false %},{% endif %}
+      {% endfor %}
+    ]'
+    data-handle="{{ product.handle }}"
+    data-available={{ product.available }}>
+  </product-card>
+{% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Card Custom",
+  "tag": "section",
+  "class": "product-card-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Card Custom"
+    }
+  ]
+}
+{% endschema %}
